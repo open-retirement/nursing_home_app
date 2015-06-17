@@ -1,0 +1,20 @@
+{"type": "FeatureCollection",
+	"features": [
+		{"type": "Feature",
+		"geometry": {"type":"Point", "coordinates": [-87.642136, 41.936554]},
+		"properties": {"provnum":"145126","provname":"ALDEN LINCOLN REHAB & H C CTR","address":"504 WEST WELLINGTON AVENUE"}
+		},
+		{"type": "Feature",
+		"geometry": {"type":"Point", "coordinates": [-87.666214, 42.019814]},
+		"properties": {"provnum":"145235","provname":"LAKEFRONT NSG & REHAB CTR","address":"7618 NORTH SHERIDAN ROAD"}
+		},
+		{"type": "Feature",
+		"geometry": {"type":"Point", "coordinates": [-87.66348, 42.012875]},
+		"properties": {"provnum":"145244","provname":"LAKE SHORE HLTHCARE &REHAB CTR","address":"7200 NORTH SHERIDAN ROAD"}
+		},
+		{"type": "Feature",
+		"geometry": {"type":"Point", "coordinates": [-87.69566, 42.012154]},
+		"properties": {"provnum":"145285","provname":"BUCKINGHAM PAVILION","address":"2625 WEST TOUHY AVENUE"}
+		}
+	]
+}

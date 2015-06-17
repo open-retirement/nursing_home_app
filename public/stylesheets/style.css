@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#map { height: 300px; 
+		width: 50%; 
+		/*position:absolute;*/
+        float:right;
+		right:50px;
+		/*top:24px;*/
+		/*padding: 10px;*/
+	}
+
+dl dt {
+	float:left;
+	font-weight: bold;
+
+}
+
+#address_search { width: 350px;}
+#geo_search{margin-left:6px;}
