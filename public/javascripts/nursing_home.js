@@ -22,7 +22,7 @@ function callGeoSearch(longitude, latitude){
             if(geoJson.getBounds().isValid()){
               Window.map.fitBounds(geoJson.getBounds().pad(0.5));  
             }
-            var col_names = ["provnum", "provname", "provaddress"]
+            var col_names = ["federal_provider_number", "provider_name", "provider_address"]
 
              //    props.provnum = features[feat].federal_provider_number;
         // props.provname = features[feat].provider_name;
