@@ -7,7 +7,7 @@ function address_search_click(){
 
 function callGeoSearch(longitude, latitude){
       var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
-      var within_qry = "?$where=within_circle(location,42.019814,-87.666214,1000)";
+      var within_qry = "?$where=within_circle(location," + latitude + "," + longitude +",2000)";
       var geoJson = new L.geoJson(null, {onEachFeature:onEachNursingHome});
       geoJson.addTo(Window.map);
 
@@ -19,13 +19,50 @@ function callGeoSearch(longitude, latitude){
             $(geojson_features.features).each(function(key, data) {
             geoJson.addData(data);
             });
-            if(geoJson.getBounds()!=null){
-              Window.map.fitBounds(geoJson.getBounds());  
+            if(geoJson.getBounds().isValid()){
+              Window.map.fitBounds(geoJson.getBounds().pad(0.5));  
             }
+            var col_names = ["provnum", "provname", "provaddress"]
+
+             //    props.provnum = features[feat].federal_provider_number;
+        // props.provname = features[feat].provider_name;
+        // props.address
+            var tbl_body = formatTable(col_names,data);
+            $("#resultsTable").html(tbl_body); 
             
           }
       }).error(function() {});
 }
+
+function formatTable(col_names, json_data_arr){
+    var tbl_body = "";
+    var header_row ="";
+    for(var columnNum in col_names){
+        header_row += "<th>"+ col_names[columnNum] + "</th>";
+    }
+    tbl_body = "<tr>" + header_row + "</tr>";
+
+    var odd_even = false;
+    $.each(json_data_arr, function(index, value) {
+       var tbl_row = "";
+          $.each(col_names, function(k , v) {
+            if(v=="id_nomatter"){
+                // add link to get media for this location
+              var href_val = '/media?id=' +value[v] ;
+              tbl_row += '<td><a href=' +href_val +' onclick="">'+value[v]+'</a></td>';
+                    // tbl_row += '<td><a href=# onclick="callLocationMedia("' + value[v] +')>'+value[v]+'</a></td>';
+            }else{
+              tbl_row += "<td>"+value[v]+"</td>";
+            }                  
+          })
+          
+        tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
+        odd_even = !odd_even;   
+    })
+
+    return tbl_body;
+}
+
 
 function callCensusGeocode(){
    var street = $('#street');
