@@ -1,4 +1,5 @@
 var express = require('express');
+var http = require('http');
 var path = require('path');
 var request = require('request');
 var favicon = require('serve-favicon');
