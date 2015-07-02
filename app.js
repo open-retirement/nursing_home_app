@@ -12,7 +12,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-app.use(enforce.HTTPS());
+app.use(enforce.HTTPS(true));
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
