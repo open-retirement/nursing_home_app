@@ -1,5 +1,3 @@
-var census_sdk_key = '4ef6c883a1c176cab8018f754fe64ee4d95df38e';
-
 function address_search_click(){
 
   callGeoSearch(-87.666214, 42.019814);
@@ -63,34 +61,31 @@ function formatTable(col_names, json_data_arr){
     return tbl_body;
 }
 
-
-function callCensusGeocode(){
+function callGeocode(){
    var street = $('#street');
    var city = $('#city');
    var state = $('#state');
-
-        var request = {
-            address: {
-                street: street.val(),
-                city: city.val(),
-                state: state.val()
-            },
-
-            variables: [
-                "income",
-                "population"
-            ],
-                level: 'tract'
-            }
-    census.APIRequest(request, function(response) {
+   street = street.val();
+   city = city.val();
+   state = state.val();
+   var goog_url = "https://maps.googleapis.com/maps/api/geocode/json?address="
+   var response_string = street + "+" + city + "+" + state;
+   var end_string = response_string.split(' ').join('+');
+   var query = goog_url + end_string;
+   $.ajax({
+      dataType: "json",
+      url : query,
+      type: 'GET',
+      success : function(data) {
+        var lat = data['results'][0]['geometry']['location']['lat'];
+        var lng = data['results'][0]['geometry']['location']['lng'];
         var output = $('#output');
-            output.empty();
-            output.append("Coordinates: " + response.lat + ", " + response.lng + " <br/>");
-            output.append("Median Income: " + response.data[0].income + "<br/>");
-            output.append("Population: " + response.data[0].population + " </br>");
-            output.append("<br/><br/><br/>Here's the address object we sent and what matched:<br/><br/>");
-            output.append("Address: " + JSON.stringify(response.address, null, 4) + "<br/>");
-        callGeoSearch(response.lng , response.lat);
+        output.empty();
+        output.append("Coordinates: " + lat + ", " + lng + " <br/>");
+        output.append("<br/><br/><br/>Here's the full response:<br/><br/>");
+        output.append(JSON.stringify(data, null, 4) + "<br/>");
+        callGeoSearch(lng, lat);
+      }
     });
 }
 
