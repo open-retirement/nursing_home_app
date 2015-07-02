@@ -2,6 +2,16 @@
  * This is the Census module
  */
 
+ var request = require('request');
+
+ var r = request.defaults({'proxy':'https://young-savannah-5874.herokuapp.com/', 'tunnel': true})
+
+ http.createServer(function (req, resp) {
+   if (req.url === 'http://*') {
+     r.get(req.url).pipe(resp);
+   }
+ })
+
 //Attach a new module object to the CitySDK prototype.
 //It is advised to keep the filenames and module property names the same
 CitySDK.prototype.modules.census = new CensusModule();
