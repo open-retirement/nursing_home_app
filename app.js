@@ -1,6 +1,4 @@
 var express = require('express');
-var http = require('http');
-var https = require('https');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -11,21 +9,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-// Start server.
-var port = process.env.PORT || 3000; // Used by Heroku and http on localhost
-
-http.createServer(app).listen(port, function () {
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
-
-app.use(function (req, res, next) {
-    res.setHeader('Strict-Transport-Security', 'max-age=8640000; includeSubDomains');
-    if (req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto'] === "http") {
-        return res.redirect(301, 'https://' + req.host + req.url);
-    } else {
-        return next();
-        }
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
