@@ -12,14 +12,6 @@ var users = require('./routes/users');
 
 var app = express();
 
-var r = request.defaults({'proxy':'https://young-savannah-5874.herokuapp.com/', 'tunnel': true})
-
-http.createServer(function (req, resp) {
-  if (req.url === 'http://*') {
-    r.get(req.url).pipe(resp);
-  }
-})
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
