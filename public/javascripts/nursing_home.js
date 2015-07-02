@@ -1,7 +1,7 @@
 var census_sdk_key = '4ef6c883a1c176cab8018f754fe64ee4d95df38e';
 
 function address_search_click(){
-  
+
   callGeoSearch(-87.666214, 42.019814);
 }
 
@@ -20,7 +20,7 @@ function callGeoSearch(longitude, latitude){
             geoJson.addData(data);
             });
             if(geoJson.getBounds().isValid()){
-              Window.map.fitBounds(geoJson.getBounds().pad(0.5));  
+              Window.map.fitBounds(geoJson.getBounds().pad(0.5));
             }
             var col_names = ["federal_provider_number", "provider_name", "provider_address"]
 
@@ -28,8 +28,8 @@ function callGeoSearch(longitude, latitude){
         // props.provname = features[feat].provider_name;
         // props.address
             var tbl_body = formatTable(col_names,data);
-            $("#resultsTable").html(tbl_body); 
-            
+            $("#resultsTable").html(tbl_body);
+
           }
       }).error(function() {});
 }
@@ -53,11 +53,11 @@ function formatTable(col_names, json_data_arr){
                     // tbl_row += '<td><a href=# onclick="callLocationMedia("' + value[v] +')>'+value[v]+'</a></td>';
             }else{
               tbl_row += "<td>"+value[v]+"</td>";
-            }                  
+            }
           })
-          
+
         tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
-        odd_even = !odd_even;   
+        odd_even = !odd_even;
     })
 
     return tbl_body;
@@ -123,7 +123,7 @@ function createPointGeom(longitude, latitude){
   return geom;
 }
 function onEachNursingHome(feature, layer){
-  
+
     var list = "<dl><dt>Id:</dt>"
            + "<dd>" + feature.properties.provnum + "</dd>"
             + "<dt>Name: </dt>"
@@ -133,5 +133,5 @@ function onEachNursingHome(feature, layer){
 
     layer.bindPopup(list);
     // layer.bindPopup(feature.properties.name);
-     
+
 }

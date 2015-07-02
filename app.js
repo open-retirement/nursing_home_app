@@ -1,6 +1,4 @@
 var express = require('express');
-var http = require('http');
-var enforce = require('express-sslify');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -12,11 +10,14 @@ var users = require('./routes/users');
 
 var app = express();
 
-app.use(enforce.HTTPS(true));
+var forceSsl = function (req, res, next) {
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(['https://', req.get('Host'), req.url].join(''));
+    }
+    return next();
+ };
 
-http.createServer(app).listen(app.get('port'), function() {
-    console.log('Express server listening on port ' + app.get('port'));
-});
+ app.use(forceSsl);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
