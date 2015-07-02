@@ -955,10 +955,10 @@ CensusModule.prototype.latLngToFIPS = function(lat, lng, callback) {
     geocoderURL = geocoderURL.replace(latPattern, lat);
     geocoderURL = geocoderURL.replace(lngPattern, lng);
     //Make our AJAX request
-    var request = CitySDK.prototype.sdkInstance.jsonpRequest(geocoderURL);
+    var req = CitySDK.prototype.sdkInstance.jsonpRequest(geocoderURL);
 
     //Attach a completion event to the promise
-    request.done(function(response) {
+    req.done(function(response) {
         //Call the callback
         callback(response.result.geographies);
     });
@@ -989,13 +989,19 @@ CensusModule.prototype.addressToFIPS = function(street, city, state, callback) {
 
     //This converts the spaces/weird characters into proper encoding so we don't break things
     geocoderURL = encodeURI(geocoderURL);
-
+    /*
     //Make the call
-    var request = CitySDK.prototype.sdkInstance.jsonpRequest(geocoderURL);
+    var req = CitySDK.prototype.sdkInstance.jsonpRequest(geocoderURL);
 
     //Send to the callback
-    request.done(function(response) {
+    req.done(function(response) {
         callback(response.result.addressMatches);
+    });
+    */
+    request(geocoderURL, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        callback(response.result.addressMatches); // Show the HTML for the Google homepage.
+      }
     });
 };
 
@@ -1011,9 +1017,9 @@ CensusModule.prototype.ZIPtoLatLng = function(zip, callback) {
 
     tigerURL = tigerURL.replace(zipPattern, zip);
 
-    var request = CitySDK.prototype.sdkInstance.ajaxRequest(tigerURL);
+    var req = CitySDK.prototype.sdkInstance.ajaxRequest(tigerURL);
 
-    request.done(function(response) {
+    req.done(function(response) {
         response = $.parseJSON(response);
         var returnValue = {
             "lat": null,
@@ -1184,10 +1190,10 @@ CensusModule.prototype.acsSummaryRequest = function(request, callback) {
     acsURL = acsURL.replace(placePattern, request.place);
     acsURL = acsURL.replace(keyPattern, this.apiKey);
 
-    var request = CitySDK.prototype.sdkInstance.ajaxRequest(acsURL);
+    var req = CitySDK.prototype.sdkInstance.ajaxRequest(acsURL);
 
     //Attach a completion event to the promise
-    request.done(function(response) {
+    req.done(function(response) {
         //Turn it into json
         var jsonObject = $.parseJSON(response);
         //Call the callback

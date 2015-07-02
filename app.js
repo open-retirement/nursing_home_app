@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var request = require('request');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -9,6 +10,14 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+var r = request.defaults({'proxy':'https://young-savannah-5874.herokuapp.com/', 'tunnel': true})
+
+http.createServer(function (req, resp) {
+  if (req.url === 'http://*') {
+    r.get(req.url).pipe(resp);
+  }
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
