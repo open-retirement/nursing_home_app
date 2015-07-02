@@ -949,7 +949,7 @@ CensusModule.prototype.latLngToFIPS = function(lat, lng, callback) {
     var lngPattern = /({lng})/;
 
     //The question mark at the end of this url tells JQuery to handle setting up and calling the JSONP callback
-    var geocoderURL = "https://geocoding.geo.census.gov/geocoder/geographies/coordinates?x={lng}&y={lat}&benchmark=4&vintage=4&layers=8,12,28,86,84&format=jsonp&callback=?";
+    var geocoderURL = "http://geocoding.geo.census.gov/geocoder/geographies/coordinates?x={lng}&y={lat}&benchmark=4&vintage=4&layers=8,12,28,86,84&format=jsonp&callback=?";
 
     //Insert our requested coordinates into the geocoder url
     geocoderURL = geocoderURL.replace(latPattern, lat);
@@ -980,7 +980,7 @@ CensusModule.prototype.addressToFIPS = function(street, city, state, callback) {
     var statePattern = /({state})/;
 
     //Geocoder URL for addresses
-    var geocoderURL = "https://geocoding.geo.census.gov/geocoder/geographies/address?street={street}&city={city}&state={state}&benchmark=4&vintage=4&layers=8,12,28,86,84&format=jsonp&callback=?";
+    var geocoderURL = "http://geocoding.geo.census.gov/geocoder/geographies/address?street={street}&city={city}&state={state}&benchmark=4&vintage=4&layers=8,12,28,86,84&format=jsonp&callback=?";
 
     //Replace with our data
     geocoderURL = geocoderURL.replace(streetPattern, street);
