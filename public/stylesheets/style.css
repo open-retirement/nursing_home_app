@@ -1,5 +1,6 @@
 body {
   padding: 50px;
+  background-image: url("background.jpg");
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
