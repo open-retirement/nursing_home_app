@@ -6,4 +6,9 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Nursing Home App' });
 });
 
+// try with html
+router.get('/static_index', function(req, res) {
+  res.send('views/static_index.html');
+});
+
 module.exports = router;
