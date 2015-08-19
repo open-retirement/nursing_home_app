@@ -1,6 +1,9 @@
 extends layout
 block extraHeader
   link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css')
+  link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+  script(type='text/javascript', src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
+  script(type='text/javascript',src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
   script(type='text/javascript', src='/javascripts/nursing_home.js')
   script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js')
   script.
@@ -16,17 +19,22 @@ block content
   h1= title
   p Welcome to #{title}
   div#map
-  div#search
-    p
-      input(type="text" id="address_search" value="enter address or zip code")
-      button#geo_search(onClick="address_search_click()") Search
-    p Street
-      input(type="text" id="street")
-    p City
-      input(type="text" id="city")
-    p State
-      input(type="text" id="state")
-    button#geocode(onClick="callGeocode()") Geocode addres
+  div#well-lg(style=" width: 300px; height :450px; background-color=#000000; ")
+   //form(action='address_search_click()',method='get')
+   div(data-role='fieldcontain', class='form-group')
+      fieldset(data-role='controlgroup')
+        label(for='Name') Name
+        input(id='Name',type='text',class='form-control',value='',placeholder='Enter your name: ',name='Name')
+   div(data-role='fieldcontain', class='form-group')
+      fieldset(data-role='controlgroup')
+        //label(for='Email-id') Name
+        input(id='Email-id',type='text',class='form-control',value='',placeholder='Enter your E-mail: ',name='Email:')
+   div(data-role='fieldcontain', class='form-group')
+      fieldset(data-role='controlgroup')
+        label(for='Locality') Locality where you wanted to search:
+        input(id='Address',type='text',class='form-control',value='',placeholder='Enter your Address/Zipcode ',name='Zipcode')    
+        input(type='submit',value='Search',data-transition='fade', class='btn btn-default' data-theme='c', onCLick='address_search_click()')
+        //button#geo_search(onClick="address_search_click()") Search
   div#results
     table#resultsTable
-  pre#output
+ 

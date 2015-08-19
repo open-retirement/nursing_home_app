@@ -1,4 +1,6 @@
-function address_search_click(){
+function address_search_click(zipcode){
+	var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
+	var within_qry = "?$where=within_circle(location," + latitude + "," + longitude +",2000)";
 
   callGeoSearch(-87.666214, 42.019814);
 }

@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  background-image: url("background.jpg");
+ // background-image: url("background.jpg");
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: rgba(0,0,0,0.5);
 }
@@ -11,6 +11,7 @@ a {
 
 #map { height: 300px; 
 		width: 50%; 
+	
 		/*position:absolute;*/
         float:right;
 		right:50px;
