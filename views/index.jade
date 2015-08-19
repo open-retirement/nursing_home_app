@@ -14,6 +14,10 @@ block extraHeader
       var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});
       Window.map.addLayer(osm);
     });
+    $("#div1").click(function(){
+                alert("working");
+            });
+
 block content
   div(class='navbar' style ="background-color=#eee;")
    h1= title
@@ -35,6 +39,8 @@ block content
         input(id='Address',type='text',class='form-control',value='',placeholder='Enter your Address/Zipcode ',name='Zipcode')    
         input(type='submit',value='Search',data-transition='fade', class='btn btn-default' data-theme='c', onCLick='address_search_click()')
         //button#geo_search(onClick="address_search_click()") Search
-  div#results(class = "list-group"  style="width: 300px; height: 300px; bottom:  350px; left: 900px;  position: relative; color=gainsboro; appearance: window; overflow-y:scroll;")
+   div#results(class = "list-group"  style="width: 300px; height: 300px; bottom:  350px; left: 900px;  position: relative; color=gainsboro; appearance: window; overflow-y:scroll;")
+     button#btn(onClick="check()" ) Search
+
    
  

@@ -52,6 +52,7 @@ function callGeoSearch(longitude, latitude){
 function formatTable(col_names, json_data_arr){
     var tbl_body = "";
     var header_row ="";
+    var id_i =1;
     for(var columnNum in col_names){
      //   header_row += "<li>"+ col_names[columnNum] + "</li>";
     }
@@ -67,15 +68,22 @@ function formatTable(col_names, json_data_arr){
               tbl_row += '<td><a href=' +href_val +' onclick="">'+value[v]+'</a></td>';
                     // tbl_row += '<td><a href=# onclick="callLocationMedia("' + value[v] +')>'+value[v]+'</a></td>';
             }else{
-              tbl_row += "<li>"+value[v]+"</li>";
+              tbl_row += "<p >"+value[v]+"</p>";
+              
             }
           })
 
-        tbl_body += "<a href=\"#\" class=\""+( odd_even )+"\">"+tbl_row+"</a>";
+        tbl_body += "<a id=\"div"+id_i+"\" href=#\"btn\"  class=\""+( odd_even )+"\">"+tbl_row+"</a>";
         //odd_even = !odd_even;
+        id_i +=1;
+        
     })
 
     return tbl_body;
+}
+
+function check(){
+	alert("hello");
 }
 
 function callGeocode(){
