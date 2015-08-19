@@ -24,8 +24,8 @@ function callGeoSearch(longitude, latitude){
       console.log(base_url + within_qry);
       var geoJson = new L.geoJson(null, {onEachFeature:onEachNursingHome});
       geoJson.addTo(Window.map);
-     // document.getElementById("routemap").style.visiblity = 'visible';
-      //document.getElementsByClassName("map").style.visiblity ="visible";
+   //   document.getElementById("map").style.visiblity = 'visible';
+     // document.getElementsByClassName("map").style;
       $.ajax({
          dataType: "json",
           url: base_url + within_qry,
@@ -37,13 +37,13 @@ function callGeoSearch(longitude, latitude){
             if(geoJson.getBounds().isValid()){
               Window.map.fitBounds(geoJson.getBounds().pad(0.5));
             }
-            var col_names = ["federal_provider_number", "provider_name", "provider_address"]
+            var col_names = [ "provider_name", "provider_address"]
 
              //    props.provnum = features[feat].federal_provider_number;
         // props.provname = features[feat].provider_name;
         // props.address
             var tbl_body = formatTable(col_names,data);
-            $("#resultsTable").html(tbl_body);
+            $("#results").html(tbl_body);
 
           }
       }).error(function() {});
@@ -53,11 +53,11 @@ function formatTable(col_names, json_data_arr){
     var tbl_body = "";
     var header_row ="";
     for(var columnNum in col_names){
-        header_row += "<th>"+ col_names[columnNum] + "</th>";
+     //   header_row += "<li>"+ col_names[columnNum] + "</li>";
     }
-    tbl_body = "<tr>" + header_row + "</tr>";
+   // tbl_body = "<li>" + header_row + "</li>";
 
-    var odd_even = false;
+    var odd_even = "list-group-item";
     $.each(json_data_arr, function(index, value) {
        var tbl_row = "";
           $.each(col_names, function(k , v) {
@@ -67,12 +67,12 @@ function formatTable(col_names, json_data_arr){
               tbl_row += '<td><a href=' +href_val +' onclick="">'+value[v]+'</a></td>';
                     // tbl_row += '<td><a href=# onclick="callLocationMedia("' + value[v] +')>'+value[v]+'</a></td>';
             }else{
-              tbl_row += "<td>"+value[v]+"</td>";
+              tbl_row += "<li>"+value[v]+"</li>";
             }
           })
 
-        tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
-        odd_even = !odd_even;
+        tbl_body += "<a href=\"#\" class=\""+( odd_even )+"\">"+tbl_row+"</a>";
+        //odd_even = !odd_even;
     })
 
     return tbl_body;
