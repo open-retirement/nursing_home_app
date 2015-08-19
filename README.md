@@ -20,6 +20,7 @@ Nursing Home Reviewing Methodology: http://www.cms.gov/Medicare/Provider-Enrollm
 
 
 -----------------------------------------------
+
 Here’s the PDFs with the special data we need:
 http://www2.illinois.gov/hfs/MedicalProvider/CostReports/Pages/default.aspx
 
@@ -27,6 +28,9 @@ Go to “Staffing and Salary Costs”
 Then find.. “Registered nurses” row’s number of hours actually worked
 divide that by total patient days
 
-AND... 
-We also need the Facility Name from the PDFs
-------------------------------------------------
+And we also need the Facility Name from the PDFs
+
+--------------------------------------------------
+
+Various other links:
+
