@@ -1,13 +1,25 @@
-function address_search_click(zipcode){
-	var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
-	var within_qry = "?$where=within_circle(location," + latitude + "," + longitude +",2000)";
-
-  callGeoSearch(-87.666214, 42.019814);
+function address_search_click(){
+  var zipcode = document.getElementById("Address").value;
+   var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
+   var within_qry = "?$select=location&provider_zip_code="+zipcode;
+   console.log(base_url + within_qry);
+   $.ajax({
+       dataType:"json",
+       url:base_url+within_qry,
+       success:function(data){
+           var loc = data;
+           var obj = JSON.parse(loc);
+           alert(loc.location+" ");
+       } 
+       
+   });
+ callGeoSearch(-87.666214, 42.019814);
 }
 
 function callGeoSearch(longitude, latitude){
       var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
       var within_qry = "?$where=within_circle(location," + latitude + "," + longitude +",2000)";
+      //console.log(base_url + within_qry);
       var geoJson = new L.geoJson(null, {onEachFeature:onEachNursingHome});
       geoJson.addTo(Window.map);
 
