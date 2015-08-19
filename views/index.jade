@@ -13,11 +13,11 @@ block extraHeader
       var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a>contributors';
       var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});
       Window.map.addLayer(osm);
-
     });
 block content
-  h1= title
-  p Welcome to #{title}
+  div(class='navbar' style ="background-color=#eee;")
+   h1= title
+   p Welcome to #{title}
   div#map
   div#well-lg(style=" width: 300px; height :450px; background-color=#000000; ")
    //form(action='address_search_click()',method='get')

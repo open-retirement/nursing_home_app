@@ -8,21 +8,24 @@ function address_search_click(){
        url:base_url+within_qry,
        success:function(data){
            var loc = data;
-           var obj = JSON.parse(loc);
-           alert(loc.location+" ");
+           ///var obj = JSON.parse(loc);
+           //alert(+" ");
+           callGeoSearch(loc[0].location.longitude, loc[0].location.latitude);
        } 
+
        
    });
- callGeoSearch(-87.666214, 42.019814);
+ 
 }
 
 function callGeoSearch(longitude, latitude){
       var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
       var within_qry = "?$where=within_circle(location," + latitude + "," + longitude +",2000)";
-      //console.log(base_url + within_qry);
+      console.log(base_url + within_qry);
       var geoJson = new L.geoJson(null, {onEachFeature:onEachNursingHome});
       geoJson.addTo(Window.map);
-
+     // document.getElementById("routemap").style.visiblity = 'visible';
+      //document.getElementsByClassName("map").style.visiblity ="visible";
       $.ajax({
          dataType: "json",
           url: base_url + within_qry,

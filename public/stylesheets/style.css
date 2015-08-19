@@ -11,10 +11,13 @@ a {
 
 #map { height: 300px; 
 		width: 50%; 
-	
+	//visibility: hidden;
 		/*position:absolute;*/
         float:right;
-		right:50px;
+		right:250px;
+		bottom:50px;
+		padding-right =100px;
+
 		/*top:24px;*/
 		/*padding: 10px;*/
 	}
