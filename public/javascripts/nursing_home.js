@@ -1,14 +1,31 @@
 function address_search_click(){
+  var zipcode = document.getElementById("Address").value;
+   var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
+   var within_qry = "?$select=location&provider_zip_code="+zipcode;
+   console.log(base_url + within_qry);
+   $.ajax({
+       dataType:"json",
+       url:base_url+within_qry,
+       success:function(data){
+           var loc = data;
+           ///var obj = JSON.parse(loc);
+           //alert(+" ");
+           callGeoSearch(loc[0].location.longitude, loc[0].location.latitude);
+       } 
 
-  callGeoSearch(-87.666214, 42.019814);
+       
+   });
+ 
 }
 
 function callGeoSearch(longitude, latitude){
       var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
       var within_qry = "?$where=within_circle(location," + latitude + "," + longitude +",2000)";
+      console.log(base_url + within_qry);
       var geoJson = new L.geoJson(null, {onEachFeature:onEachNursingHome});
       geoJson.addTo(Window.map);
-
+   //   document.getElementById("map").style.visiblity = 'visible';
+     // document.getElementsByClassName("map").style;
       $.ajax({
          dataType: "json",
           url: base_url + within_qry,
@@ -20,13 +37,13 @@ function callGeoSearch(longitude, latitude){
             if(geoJson.getBounds().isValid()){
               Window.map.fitBounds(geoJson.getBounds().pad(0.5));
             }
-            var col_names = ["federal_provider_number", "provider_name", "provider_address"]
+            var col_names = [ "provider_name", "provider_address"]
 
              //    props.provnum = features[feat].federal_provider_number;
         // props.provname = features[feat].provider_name;
         // props.address
             var tbl_body = formatTable(col_names,data);
-            $("#resultsTable").html(tbl_body);
+            $("#results").html(tbl_body);
 
           }
       }).error(function() {});
@@ -35,12 +52,13 @@ function callGeoSearch(longitude, latitude){
 function formatTable(col_names, json_data_arr){
     var tbl_body = "";
     var header_row ="";
+    var id_i =1;
     for(var columnNum in col_names){
-        header_row += "<th>"+ col_names[columnNum] + "</th>";
+     //   header_row += "<li>"+ col_names[columnNum] + "</li>";
     }
-    tbl_body = "<tr>" + header_row + "</tr>";
+   // tbl_body = "<li>" + header_row + "</li>";
 
-    var odd_even = false;
+    var odd_even = "list-group-item";
     $.each(json_data_arr, function(index, value) {
        var tbl_row = "";
           $.each(col_names, function(k , v) {
@@ -50,15 +68,22 @@ function formatTable(col_names, json_data_arr){
               tbl_row += '<td><a href=' +href_val +' onclick="">'+value[v]+'</a></td>';
                     // tbl_row += '<td><a href=# onclick="callLocationMedia("' + value[v] +')>'+value[v]+'</a></td>';
             }else{
-              tbl_row += "<td>"+value[v]+"</td>";
+              tbl_row += "<p >"+value[v]+"</p>";
+              
             }
           })
 
-        tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
-        odd_even = !odd_even;
+        tbl_body += "<a id=\"div"+id_i+"\" href=#\"btn\"  class=\""+( odd_even )+"\">"+tbl_row+"</a>";
+        //odd_even = !odd_even;
+        id_i +=1;
+        
     })
 
     return tbl_body;
+}
+
+function check(){
+	alert("hello");
 }
 
 function callGeocode(){

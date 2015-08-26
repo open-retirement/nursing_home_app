@@ -17,3 +17,20 @@ CHI Data Sources:
 
 Nursing Home Compare: https://data.medicare.gov/data/nursing-home-compare
 Nursing Home Reviewing Methodology: http://www.cms.gov/Medicare/Provider-Enrollment-and-Certification/CertificationandComplianc/Downloads/usersguide.pdf
+
+
+-----------------------------------------------
+
+Here’s the PDFs with the special data we need:
+http://www2.illinois.gov/hfs/MedicalProvider/CostReports/Pages/default.aspx
+
+Go to “Staffing and Salary Costs”
+Then find.. “Registered nurses” row’s number of hours actually worked
+divide that by total patient days
+
+And we also need the Facility Name from the PDFs
+
+--------------------------------------------------
+
+Various other links:
+
