@@ -11,19 +11,19 @@ function address_search_click(){
            ///var obj = JSON.parse(loc);
            //alert(+" ");
            callGeoSearch(loc[0].location.longitude, loc[0].location.latitude);
-       } 
+       }
 
-       
+
    });
- 
+
 }
 
-function callGeoSearch(longitude, latitude){
+function callGeoSearch(longitude, latitude, map){
       var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
-      var within_qry = "?$where=within_circle(location," + latitude + "," + longitude +",2000)";
+      var within_qry = "?$where=within_circle(location," + latitude + "," + longitude +",10000)";
       console.log(base_url + within_qry);
       var geoJson = new L.geoJson(null, {onEachFeature:onEachNursingHome});
-      geoJson.addTo(Window.map);
+      geoJson.addTo(map);
    //   document.getElementById("map").style.visiblity = 'visible';
      // document.getElementsByClassName("map").style;
       $.ajax({
@@ -35,7 +35,7 @@ function callGeoSearch(longitude, latitude){
             geoJson.addData(data);
             });
             if(geoJson.getBounds().isValid()){
-              Window.map.fitBounds(geoJson.getBounds().pad(0.5));
+              map.fitBounds(geoJson.getBounds().pad(0.5));
             }
             var col_names = [ "provider_name", "provider_address"]
 
@@ -69,14 +69,14 @@ function formatTable(col_names, json_data_arr){
                     // tbl_row += '<td><a href=# onclick="callLocationMedia("' + value[v] +')>'+value[v]+'</a></td>';
             }else{
               tbl_row += "<p >"+value[v]+"</p>";
-              
+
             }
           })
 
         tbl_body += "<a id=\"div"+id_i+"\" href=#\"btn\"  class=\""+( odd_even )+"\">"+tbl_row+"</a>";
         //odd_even = !odd_even;
         id_i +=1;
-        
+
     })
 
     return tbl_body;
