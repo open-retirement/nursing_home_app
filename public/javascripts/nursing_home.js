@@ -9,8 +9,13 @@ function address_search_click(){
        success:function(data){
            var loc = data;
            ///var obj = JSON.parse(loc);
-           //alert(+" ");
-           callGeoSearch(loc[0].location.longitude, loc[0].location.latitude);
+           if (data!=null && data.length>0){
+            callGeoSearch(loc[0].location.longitude, loc[0].location.latitude);
+           }else{
+            alert("No Results Returned"); 
+           }
+           
+           
        } 
 
        
@@ -37,26 +42,37 @@ function callGeoSearch(longitude, latitude){
             if(geoJson.getBounds().isValid()){
               Window.map.fitBounds(geoJson.getBounds().pad(0.5));
             }
-            var col_names = [ "provider_name", "provider_address"]
+            var col_names = [ "provider_name", "provider_address", "quality_of_care_points", "quality_of_care_stars"]
 
-             //    props.provnum = features[feat].federal_provider_number;
-        // props.provname = features[feat].provider_name;
-        // props.address
+            // var measure_codes = [424,425,434,401,403,406,409,407,402,410,419];
+            // var measure_codes = [410,424];
+            
+          getQualityofCare(data, col_names, measure_codes, "#results");
             var tbl_body = formatTable(col_names,data);
-            $("#results").html(tbl_body);
-
-          }
+            // $("#results").html(tbl_body);
+            // $("#results").append(tbl_body);
+            }
+          
       }).error(function() {});
+}
+
+
+function formatRow(col_names, json_data){
+  var odd_even = "list-group-item";
+  var id_i =1;
+  var tbl_row = "";
+  $.each(col_names, function(k , v) {
+    tbl_row += "<p >"+json_data[v]+"</p>";
+  })
+
+  return "<a id=\"div"+id_i+"\" href=#\"btn\"  class=\""+( odd_even )+"\">"+tbl_row+"</a>";
 }
 
 function formatTable(col_names, json_data_arr){
     var tbl_body = "";
     var header_row ="";
     var id_i =1;
-    for(var columnNum in col_names){
-     //   header_row += "<li>"+ col_names[columnNum] + "</li>";
-    }
-   // tbl_body = "<li>" + header_row + "</li>";
+
 
     var odd_even = "list-group-item";
     $.each(json_data_arr, function(index, value) {
@@ -82,9 +98,6 @@ function formatTable(col_names, json_data_arr){
     return tbl_body;
 }
 
-function check(){
-	alert("hello");
-}
 
 function callGeocode(){
    var street = $('#street');
@@ -142,6 +155,7 @@ function createPointGeom(longitude, latitude){
 
   return geom;
 }
+
 function onEachNursingHome(feature, layer){
 
     var list = "<dl><dt>Id:</dt>"

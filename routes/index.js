@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
 
 // try with html
 router.get('/static_index', function(req, res) {
-  res.send('views/static_index.html');
+  res.sendFile('views/static_index.html');
 });
 
 module.exports = router;

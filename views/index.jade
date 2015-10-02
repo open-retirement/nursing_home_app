@@ -5,6 +5,8 @@ block extraHeader
   script(type='text/javascript', src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
   script(type='text/javascript',src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
   script(type='text/javascript', src='/javascripts/nursing_home.js')
+  script(type='text/javascript', src='/javascripts/measure_ratings.js')
+  script(type='text/javascript', src='/javascripts/illinois_measure_avgs.js')
   script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js')
   script.
     $(document).ready(function(){
@@ -40,7 +42,7 @@ block content
         input(type='submit',value='Search',data-transition='fade', class='btn btn-default' data-theme='c', onCLick='address_search_click()')
         //button#geo_search(onClick="address_search_click()") Search
    div#results(class = "list-group"  style="width: 300px; height: 300px; bottom:  350px; left: 900px;  position: relative; color=gainsboro; appearance: window; overflow-y:scroll;")
-     button#btn(onClick="check()" ) Search
+     //- button#btn(onClick="check()" ) Search
 
    
  
