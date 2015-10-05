@@ -1,0 +1,29 @@
+extends layout
+block extraHeader
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css')
+  link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+  script(type='text/javascript', src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
+  script(type='text/javascript',src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+  script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js')
+  script(type='text/javascript', src='/javascripts/nursing_home.js')
+
+block content
+  div(class='navbar' style ="background-color=#eee;")
+   h1= title
+   p Welcome to #{title}
+  div#map
+
+  script(type='text/javascript').
+    $(document).ready(function(){
+      Window.map = L.map('map').setView([41.8819, -87.6278], 9);
+      var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+      var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a>contributors';
+      var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});
+      Window.map.addLayer(osm);
+      var lat = !{latitude};
+      var lon = !{longitude};
+      callGeoSearch(parseFloat(lon), parseFloat(lat), Window.map);
+    });
+    $("#div1").click(function(){
+                alert("working");
+            });
