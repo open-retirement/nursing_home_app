@@ -114,8 +114,8 @@ function sum_quality_of_care(dataArr, measure_codes){
   	 }else{ //if there is no value in the data, use the state average
   	 	measure_value = measure_codes[dataArr[data].measure_code].perc_avg;
   	 }
-  	 var percentile = calcPercentile(measure_codes[dataArr[data].measure_code].state_data, measure_value);
-     points += percentile; //actually need to convert to points depending on measure score
+  	 var percentile = 100*calcPercentile(measure_codes[dataArr[data].measure_code].state_data, measure_value);
+     points += calc_score(percentile, dataArr[data].measure_code); //actually need to convert to points depending on measure score
   }
  
   return points;
@@ -139,7 +139,11 @@ function calcPercentile(measure_data, value){
       if(n < arr.length){
         var p_n = n/num_homes;
         var p_n1 = (n+1)/num_homes;
-        var diff = (value-arr[n].three_quarter_average)/(arr[n+1].three_quarter_average - arr[n].three_quarter_average);
+        var diff = 0;
+        if(arr[Number(n)+1].three_quarter_average - arr[n].three_quarter_average !=0){
+           diff = (value-arr[n].three_quarter_average)/(arr[Number(n)+1].three_quarter_average - arr[n].three_quarter_average);
+        }
+        
         percentile = n/num_homes + (p_n1-p_n)*diff;
         break;
       }

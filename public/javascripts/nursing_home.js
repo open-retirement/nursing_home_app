@@ -1,3 +1,5 @@
+ var exports = {}; // (*)
+
 function address_search_click(){
   var zipcode = document.getElementById("Address").value;
    var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";

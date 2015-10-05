@@ -1,3 +1,6 @@
+if (typeof exports == "undefined") {
+        var exports = {}; // (*)
+    };
 
 // measure_avgs = [{"401":72.9},
 //   {"402":45.0},
@@ -45,13 +48,14 @@ function calc_score(perc, measure_code){
 
 	switch(measure_code){
 		case 425: //ulcers
-			if(perc ==0){
+			if(perc == 0){
+				console.log(measure_code + " " + perc);
 				ret_val = 100
 			}else if(perc<25){ 
 				ret_val = 25;
 			}else if(perc<=50){ 
 				ret_val = 50;
-			}else if(perc<=75){ 
+			}else{ 
 				ret_val = 75;
 			}
 			break;
@@ -72,7 +76,7 @@ function calc_score(perc, measure_code){
 			}else if(perc<=40){ 
 				ret_val = 80;
 			}else if(perc<=60){ 
-				ret_val = 40;
+				ret_val = 60;
 			}else if(perc<=80){ 
 				ret_val = 40;
 			}else if(perc>80){ 
@@ -111,3 +115,4 @@ function calc_score(perc, measure_code){
 	return ret_val;
 };
 
+exports.calc_score = calc_score;
