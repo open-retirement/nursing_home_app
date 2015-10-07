@@ -1,9 +1,13 @@
 body {
   padding: 50px;
- // background-image: url("background.jpg");
+  background-image: linear-gradient(to right, rgba(255,255,255,.5), rgba(255,255,255,1)),
+                    url("background.jpg");
+  background-size: 100% auto;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: rgba(0,0,0,0.5);
+  
 }
+
+
 
 a {
   color: #00B7FF;
