@@ -1,4 +1,4 @@
-###Nursing Home Comparison Web Application
+### Nursing Home Comparison Web Application
 
 Purpose is to provide information about nearby nursing homes so that users can determine which is the best
 option.
@@ -8,8 +8,9 @@ My working version of node is v0.10.26 which is a little old, but it should work
 
 *Start command with debug is*
 
-
+```
 DEBUG=nursing_home_app npm start
+```
 
 CHI Data Sources:
      - Senior Centers https://data.cityofchicago.org/Health-Human-Services/Senior-Centers/qhfc-4cw2
