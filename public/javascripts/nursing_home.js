@@ -1,5 +1,8 @@
  var exports = {}; // (*)
 
+
+
+
 function address_search_click(){
   var zipcode = document.getElementById("Address").value;
    var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
@@ -28,6 +31,18 @@ function address_search_click(){
 
 }
 
+function login_addrcheck(){
+var username  = document.getElementById("user").value;
+var password = document.getElementById("pass").value;
+if(username === "kashyap" && password === "kashyap")
+{
+	document.getElementById("map").style.visibility = "visible";
+	document.getElementById("login-container").load("layout.jade");
+}
+
+console.log(username + password);
+
+}
 function callGeoSearch(longitude, latitude, map){
       var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
       var within_qry = "?$where=within_circle(location," + latitude + "," + longitude +",10000)";

@@ -17,6 +17,19 @@ if (typeof exports == "undefined") {
 
 // var measure_codes = [424,425,434,401,403,406,409,407,402,410,419];
 
+function login_addrcheck(){
+var username  = document.getElementById("user").value;
+var password = document.getElementById("pass").value;
+if(username === "kashyap" && password === "kashyap")
+{
+	document.getElementById("map").style.visibility = "visible";
+	document.getElementById("login-container").load("layout.jade");
+}
+
+console.log(username + password);
+}
+
+
 var measure_codes = 
 	{"401":{
 		perc_avg: 72.9,

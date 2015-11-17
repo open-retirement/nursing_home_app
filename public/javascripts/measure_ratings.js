@@ -15,6 +15,18 @@ function getQualityofCare(providers, col_names, measure_codes, divName){
 
 }
 
+
+function login_addrcheck(){
+var username  = document.getElementById("user").value;
+var password = document.getElementById("pass").value;
+if(username === "kashyap" && password === "kashyap")
+{
+	document.getElementById("map").style.visibility = "visible";
+	document.getElementById("login-container").load("layout.jade");
+}
+
+
+
 function getIllinoisMeasures(measure_codes, func){
    // this 
    var base_url = "https://data.medicare.gov/resource/djen-97ju.json";

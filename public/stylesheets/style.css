@@ -9,13 +9,30 @@ body {
 
 
 
+#header{
+	background-image: url("CNHS_Square_Logo.png");
+	float: right;
+	width: 300px;
+	height: 100px;
+}
+
+#layout {
+	width: 800px;
+	height:800px;
+}
+#loginlayout{
+	width: 250px;
+	height: 500;
+}
+
+
 a {
   color: #00B7FF;
 }
 
 #map { height: 300px; 
 		width: 500px; 
-	//visibility: hidden;
+	    //visibility: hidden;
 		position:absolute;
         float:right;
 		right:350px;
