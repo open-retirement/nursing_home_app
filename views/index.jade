@@ -9,7 +9,7 @@ block extraHeader
   script(type='text/javascript', src='/javascripts/measure_ratings.js')
   script(type='text/javascript', src='/javascripts/illinois_measure_avgs.js')
   script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js')
-   script.
+  script.
     $(document).ready(function(){
       Window.map = L.map('map').setView([41.8819, -87.6278], 9);
        var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -17,8 +17,6 @@ block extraHeader
        var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});
        Window.map.addLayer(osm);
     });
-   
-
 block content
     div#header
     div#layout

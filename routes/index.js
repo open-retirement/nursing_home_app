@@ -5,6 +5,9 @@ var router = express.Router();
 router.get('/', function(req, res) {
   res.render('index', { title: 'Nursing Home App' });
 });
+router.get('/', function(req, res) {
+  res.render('layout.jade', { title: 'Nursing Home App' });
+});
 
 router.get('/map/:lat/:lon', function(req, res) {
   var lat = req.params.lat;

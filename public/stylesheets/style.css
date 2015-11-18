@@ -32,7 +32,7 @@ a {
 
 #map { height: 300px; 
 		width: 500px; 
-	    //visibility: hidden;
+	    visibility: hidden;
 		position:absolute;
         float:right;
 		right:350px;

@@ -1,11 +1,17 @@
 doctype html
 html
-	head
-		title= title
-		link(rel='stylesheet', href='/stylesheets/style.css')
-		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js')
-		script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
-		block extraHeader
-	body
-		block content
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+        script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js')
+        script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+        block extraHeader
+    body
+        block content
+          div(data-role='fieldcontain', class='form-group')
+           fieldset(data-role='controlgroup')
+           input(id='Address',type='text',class='form-control',value='',placeholder='Enter your Address/Zipcode ',name='Zipcode')
+           input(type='submit',value='Search',data-transition='fade', class='btn btn-default' data-theme='c', onCLick='address_search_click()')
+        //button#geo_search(onClick="address_search_click()") Search
+          div#results(class = "list-group"  style="width: 300px; height: 300px; bottom:  350px; left: 900px;  position: relative; color=gainsboro; appearance: window; overflow-y:scroll;")

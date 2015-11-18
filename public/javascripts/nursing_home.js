@@ -24,7 +24,7 @@ function address_search_click(){
            
        } 
            //alert(+" ");
-           callGeoSearch(loc[0].location.longitude, loc[0].location.latitude);
+        //   callGeoSearch(loc[0].location.longitude, loc[0].location.latitude);
        }
 
    });
@@ -37,7 +37,7 @@ var password = document.getElementById("pass").value;
 if(username === "kashyap" && password === "kashyap")
 {
 	document.getElementById("map").style.visibility = "visible";
-	document.getElementById("login-container").load("layout.jade");
+	$("login-container").load("layout.jade");
 }
 
 console.log(username + password);
