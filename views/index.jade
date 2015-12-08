@@ -5,36 +5,23 @@ block extraHeader
   script(type='text/javascript', src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
   script(type='text/javascript',src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
   script(type='text/javascript', src='/javascripts/nursing_home.js')
+  script(type='text/javascript', src='/javascripts/functions.js')
   script(type='text/javascript', src='/javascripts/measure_ratings.js')
   script(type='text/javascript', src='/javascripts/illinois_measure_avgs.js')
   script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js')
   script.
-    //$(document).ready(function(){
-      //Window.map = L.map('map').setView([41.8819, -87.6278], 9);
-      //var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-      //var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a>contributors';
-      //var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});
-      //Window.map.addLayer(osm);
-    //});
-    $("#div1").click(function(){
-                alert("working");
-            });
-
+    $(document).ready(function(){
+      Window.map = L.map('map').setView([41.8819, -87.6278], 9);
+       var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+       var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a>contributors';
+       var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 18, attribution: osmAttrib});
+       Window.map.addLayer(osm);
+    });
 block content
   div(class='navbar' style ="background-color=#eee;")
-   //h1= title
-   //p Welcome to #{title}
    img(src="/stylesheets/CNHS_Square_Logo.png")
   div#well-lg(style=" width: 300px; height :300px; color=gainsboro; ")
-   //form(action='address_search_click()',method='get')
-   //div(data-role='fieldcontain', class='form-group')
-      //fieldset(data-role='controlgroup')
-        //label(for='Name') Name
-        //input(id='Name',type='text',class='form-control',value='',placeholder='Enter your name: ',name='Name')
-   //div(data-role='fieldcontain', class='form-group')
-      //fieldset(data-role='controlgroup')
-        //label(for='Email-id') Name
-        //input(id='Email-id',type='text',class='form-control',value='',placeholder='Enter your E-mail: ',name='Email:')
+  
    div(data-role='fieldcontain', class='form-group')
       fieldset(data-role='controlgroup')
         label(for='Locality') Enter your address to start your search:
@@ -43,3 +30,4 @@ block content
         //button#geo_search(onClick="getAddressAndForward()") Search
    div#results(class = "list-group"  style="width: 300px; height: 300px; bottom:  350px; left: 900px;  position: relative; color=gainsboro; appearance: window; overflow-y:scroll;")
      //- button#btn(onClick="check()" ) Search
+

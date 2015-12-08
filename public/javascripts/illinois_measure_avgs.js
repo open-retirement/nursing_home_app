@@ -17,6 +17,21 @@ if (typeof exports == "undefined") {
 
 // var measure_codes = [424,425,434,401,403,406,409,407,402,410,419];
 
+function login_addrcheck(){
+var username  = document.getElementById("user").value;
+var password = document.getElementById("pass").value;
+if(username === "kashyap" && password === "kashyap")
+{
+	document.getElementById("map").style.visibility = "visible";
+	$(#login-form).load("static_index.html");
+	//document.getElementById("login-form").innerHTML= '<form role="form">'+ '<div class="form-group span3">   </br>'+ '<input type="text" class="form-control span3 " id="email" placeholder="Enter the area you are looking">' +' </div>'+ '<div class="form-group">'+' </br>  <input type="text" class="form-control" id="pwd" placeholder="Enter the Zipcode "></div>  <button type="submit" class="btn btn-default">Search</button> </form>';
+	//document.getElementById("login-form").innerHTML='<object type="type/html" data="static_index.html" ></object>';
+}
+
+console.log(username + password);
+
+}
+
 var measure_codes = 
 	{"401":{
 		perc_avg: 72.9,

@@ -5,6 +5,9 @@ var router = express.Router();
 router.get('/', function(req, res) {
   res.render('index', { title: 'Nursing Home App' });
 });
+router.get('/', function(req, res) {
+  res.render('layout.jade', { title: 'Nursing Home App' });
+});
 
 // router.get('/map/:zipcode', function(req, res) {
 //   var zipcode = req.params.zipcode;

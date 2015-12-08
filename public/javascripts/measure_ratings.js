@@ -15,6 +15,7 @@ function getQualityofCare(providers, col_names, measure_codes, divName){
 
 }
 
+
 function getIllinoisMeasures(measure_codes, func){
    // this 
    var base_url = "https://data.medicare.gov/resource/djen-97ju.json";
