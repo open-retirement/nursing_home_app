@@ -6,7 +6,18 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Nursing Home App' });
 });
 
-router.get('/map/:lat/:lon', function(req, res) {
+// router.get('/map/:zipcode', function(req, res) {
+//   var zipcode = req.params.zipcode;
+//   console.log(zipcode);
+
+//   res.render('map', {
+//     title: "Map",
+//     zipcode: zipcode
+//   });
+//   //res.render('map', { locals: { latitude : lat, longitude: lon } });
+// });
+
+router.get('/map/:lon/:lat', function(req, res) {
   var lat = req.params.lat;
   var lon = req.params.lon;
   console.log(lat + ", " + lon);

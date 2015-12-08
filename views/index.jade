@@ -39,7 +39,7 @@ block content
       fieldset(data-role='controlgroup')
         label(for='Locality') Enter your address to start your search:
         input(id='Address',type='text',class='form-control',value='',placeholder='Enter your Address/Zipcode ',name='Zipcode')
-        input(type='submit',value='Search',data-transition='fade', class='btn btn-default' data-theme='c', onCLick='address_search_click()')
-        //button#geo_search(onClick="address_search_click()") Search
+        input(type='submit',value='Search',data-transition='fade', class='btn btn-default' data-theme='c', onCLick='getAddressAndForward()')
+        //button#geo_search(onClick="getAddressAndForward()") Search
    div#results(class = "list-group"  style="width: 300px; height: 300px; bottom:  350px; left: 900px;  position: relative; color=gainsboro; appearance: window; overflow-y:scroll;")
      //- button#btn(onClick="check()" ) Search

@@ -15,15 +15,15 @@ a {
 
 #map { height: 300px; 
 		width: 500px; 
-	//visibility: hidden;
-		position:absolute;
-        float:right;
-		right:350px;
-		bottom:50px;
-		padding-right =500px;
+	/*//visibility: hidden;*/
+		position:static;
+        /*float:right;*/
+	/*	right:350px;
+		bottom:50px;*/
+		/*padding-right =500px;*/
 
 		top:24px;
-		padding: 10px;
+		padding: 20px;
 	}
 
 dl dt {
@@ -31,6 +31,15 @@ dl dt {
 	font-weight: bold;
 
 }
-
+#results{
+	width: 300px; 
+	height: 300px; 
+	bottom:  350px; 
+	left: 900px;  
+	/*position: relative; */
+	color=gainsboro; 
+	appearance: window; 
+	overflow-y:scroll;
+}
 #address_search { width: 350px;}
 #geo_search{margin-left:6px;}

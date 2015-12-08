@@ -6,12 +6,15 @@ block extraHeader
   script(type='text/javascript',src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
   script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js')
   script(type='text/javascript', src='/javascripts/nursing_home.js')
+  script(type='text/javascript', src='/javascripts/measure_ratings.js')
+  script(type='text/javascript', src='/javascripts/illinois_measure_avgs.js')
 
 block content
-  div(class='navbar' style ="background-color=#eee;")
+  //- div(class='navbar' style ="background-color=#eee;")
    h1= title
-   p Welcome to #{title}
+   //- p Welcome to #{title}
   div#map
+  div#results(class = "list-group")
 
   script(type='text/javascript').
     $(document).ready(function(){

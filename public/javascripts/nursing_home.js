@@ -1,5 +1,13 @@
  var exports = {}; // (*)
 
+function getAddressAndForward(){
+  var zipcode = document.getElementById("Address").value;
+  callZipGeocode(zipcode, function(err, lat, lng){
+      location.href='/map/' + lat + "/" + lng;
+  });
+
+}
+
 function address_search_click(){
   var zipcode = document.getElementById("Address").value;
    var base_url = "https://data.medicare.gov/resource/4pq5-n9py.json";
@@ -19,7 +27,7 @@ function address_search_click(){
            }
            
            
-       } 
+       
            //alert(+" ");
            callGeoSearch(loc[0].location.longitude, loc[0].location.latitude);
        }
@@ -103,7 +111,29 @@ function formatTable(col_names, json_data_arr){
     return tbl_body;
 }
 
-
+function callZipGeocode(zip, retFunc){
+   
+   var goog_url = "https://maps.googleapis.com/maps/api/geocode/json?address="
+   var response_string = zip;
+   var end_string = response_string.split(' ').join('+');
+   var query = goog_url + end_string;
+   $.ajax({
+      dataType: "json",
+      url : query,
+      type: 'GET',
+      success : function(data) {
+        var lat = data['results'][0]['geometry']['location']['lat'];
+        var lng = data['results'][0]['geometry']['location']['lng'];
+        // var output = $('#output');
+        // output.empty();
+        // output.append("Coordinates: " + lat + ", " + lng + " <br/>");
+        // output.append("<br/><br/><br/>Here's the full response:<br/><br/>");
+        // output.append(JSON.stringify(data, null, 4) + "<br/>");
+        
+        retFunc(null, lng, lat);
+      }
+    });
+}
 function callGeocode(){
    var street = $('#street');
    var city = $('#city');
